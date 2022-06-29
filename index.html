@@ -42,7 +42,7 @@
         window.onload = () => {
             let btn = document.querySelector("button")
             btn.addEventListener("click", (e) => {
-                window.navigator.vibrate([200, 100, 200]);
+                window.navigator.vibrate([500, 100, 500, 100, 500, 100]);
                 btn.innerText = "Clicked"
             })
         }
