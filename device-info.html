@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device info</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            background-color: lightcyan;
+            grid-gap: 1em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        div {
+            background-color: white;
+            padding: 1em;
+            border: 1px black solid;
+            border-radius: 1em;
+            box-shadow: 0 0 4px black;
+        }
+
+        button {
+            background-color: black;
+            color: whitesmoke;
+            border: 1px solid whitesmoke;
+            border-radius: 1em;
+            padding: 1em;
+            margin: 1em;
+            transition: all 200ms ease-in-out;
+        }
+
+        button:hover {
+            background-color: whitesmoke;
+            border-color: black;
+            color: black;
+            padding: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Internet connection</h3>
+        <span id="internet"></span>
+    </div>
+
+    <div>
+        <h3>Battery</h3>
+        <p>charging: <span id="charging"></span></p>
+        <p>level info: <span id="level"></span></p>
+        <p>Battery charging time: <span id="time"></span></p>
+        <p>Battery discharging time: <span id="discharging"></span></p>
+    </div>
+
+    <div>
+        <h3>Bluetooth</h3>
+        <button id="bluetooth">Click here to connect device</button>
+        <p>info: <span id="blt-info"></span></p>
+    </div>
+
+    <div>
+        <h3>Clipboard</h3>
+        <span>Your clipboard text: </span>
+        <br />
+        <code id="clipboard"><span ></span></code>
+        <br />
+        <button id="copy">Click here to copy</button>
+    </div>
+
+    <div>
+        <h3>Wake screen</h3>
+        <p><span id="wake"></span></p>
+    </div>
+
+    <div>
+        <h3>Selected</h3>
+        <code id="selected"></code>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const updateSeleted = () => {
+                const selected = document.getSelection()
+                if (selected.type === "Range") {
+                    console.log(selected)
+                    document.querySelector("#selected").innerHTML = selected.baseNode.data
+                }
+            }
+
+            document.addEventListener("selectstart", updateSeleted)
+            document.addEventListener("selectionchange", updateSeleted)
+            document.addEventListener("select", updateSeleted)
+
+            let internet = document.querySelector("#internet")
+            internet.innerHTML = `${navigator.connection.effectiveType} - ${navigator.connection.type}`;
+
+            let options = {
+                filters: [
+                    { services: ['heart_rate'] },
+                    { services: [0x1802, 0x1803] },
+                    { services: ['c48e6067-5295-48d3-8d5c-0395f61792b1'] },
+                    { name: 'ExampleName' },
+                    { namePrefix: 'Prefix' }
+                ],
+                optionalServices: ['battery_service']
+            }
+
+            document.querySelector("#bluetooth").addEventListener("click", () => {
+                let logger = document.querySelector("#blt-info")
+                navigator.bluetooth.requestDevice(options).then(function (device) {
+                    logger.innerHTML = ('Name: ' + device.name);
+                })
+                    .catch(function (error) {
+                        logger.innerHTML = ("Something went wrong. " + error);
+                    });
+            })
+
+
+            let statusElem = document.querySelector("#wake")
+            if ('wakeLock' in navigator) {
+                isSupported = true;
+                statusElem.textContent = 'Screen Wake Lock API supported!';
+            } else {
+                wakeButton.disabled = true;
+                statusElem.textContent = 'Wake lock is not supported by this browser.';
+            }
+            (async () => {
+                let wakeLock = null;
+            try {
+                console.log("trying to access wake screen");
+                wakeLock = await navigator.wakeLock.request('screen');
+                statusElem.textContent = 'Wake Lock is active!';
+            } catch (err) {
+                statusElem.textContent = `error: ${err.name}, ${err.message}`;
+            }
+            })();
+
+
+
+            navigator.clipboard.readText().then(
+                clipText => document.querySelector("#clipboard").innerText += clipText);
+
+            document.querySelector("#copy").addEventListener("click", () => {
+                navigator.clipboard.writeText("LOL")
+            })
+
+            navigator.getBattery().then(battery => {
+                function updateAllBatteryInfo() {
+                    updateChargeInfo();
+                    updateLevelInfo();
+                    updateChargingInfo();
+                    updateDischargingInfo();
+                }
+                updateAllBatteryInfo();
+
+                battery.addEventListener('chargingchange', () => {
+                    updateChargeInfo();
+                });
+
+                function updateChargeInfo() {
+                    document.querySelector("#charging").innerHTML = battery.charging ? "Yes" : "No";
+                }
+
+                battery.addEventListener('levelchange', () => {
+                    updateLevelInfo();
+                });
+                function updateLevelInfo() {
+                    document.querySelector("#level").innerHTML = battery.level * 100 + "%";
+                }
+
+                battery.addEventListener('chargingtimechange', () => {
+                    updateChargingInfo();
+                });
+                function updateChargingInfo() {
+                    document.querySelector("#time").innerHTML = battery.chargingTime + " seconds";
+                }
+
+                battery.addEventListener('dischargingtimechange', () => {
+                    updateDischargingInfo();
+                });
+                function updateDischargingInfo() {
+                    document.querySelector("#discharging").innerHTML = battery.dischargingTime + " seconds";
+                }
+
+            });
+
+        }
+    </script>
+</body>
+
+</html>
