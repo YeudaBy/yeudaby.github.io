@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3b2cb9d-9b6f-4551-98f3-391933a94359" name="Changes" comment="try again" />
+    <list default="true" id="a3b2cb9d-9b6f-4551-98f3-391933a94359" name="Changes" comment="try again">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/framework-f99e4e38d5204d9a.js" beforeDir="false" afterPath="$PROJECT_DIR$/framework-f99e4e38d5204d9a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/main-e0ddca6ca271803b.js" beforeDir="false" afterPath="$PROJECT_DIR$/main-e0ddca6ca271803b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/pages/_app-deb173bd80cbaa92.js" beforeDir="false" afterPath="$PROJECT_DIR$/_app-deb173bd80cbaa92.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/pages/_error-7397496ca01950b1.js" beforeDir="false" afterPath="$PROJECT_DIR$/_error-7397496ca01950b1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/pages/index-3ffca98086b9acd5.js" beforeDir="false" afterPath="$PROJECT_DIR$/index-3ffca98086b9acd5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/polyfills-c67a75d1b6f99dc8.js" beforeDir="false" afterPath="$PROJECT_DIR$/polyfills-c67a75d1b6f99dc8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/chunks/webpack-7ee66019f7f6d30f.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack-7ee66019f7f6d30f.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/css/5a51a3e84875276b.css" beforeDir="false" afterPath="$PROJECT_DIR$/5a51a3e84875276b.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/css/ada07874937f93a7.css" beforeDir="false" afterPath="$PROJECT_DIR$/ada07874937f93a7.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/media/bg.dc5a4da1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/bg.dc5a4da1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/znfLrMAxNvJSWliDc2uX2/_buildManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/_buildManifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/static/znfLrMAxNvJSWliDc2uX2/_ssgManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/_ssgManifest.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +43,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/meat-timer" />
       <recent name="$PROJECT_DIR$/meat-timer/_next" />
     </key>
@@ -41,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659082377642</updated>
-      <workItem from="1659082378851" duration="1413000" />
+      <workItem from="1659082378851" duration="1816000" />
     </task>
     <task id="LOCAL-00001" summary="t4er">
       <created>1659082454008</created>
@@ -85,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659083784726</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="try again">
+      <created>1659083983597</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1659083983597</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
