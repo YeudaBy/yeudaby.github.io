@@ -16,33 +16,49 @@ html {
 header {
   display: flex;
   justify-content: space-evenly;
-  gap: 16px;
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, rgba(141, 141, 141, 0.9), rgba(255, 255, 255, 0));
   z-index: 100;
-  padding: 2em 0 4em 0;
+  padding-top: 0;
+  padding-bottom: 2em;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   height: 80px;
+  overflow: hidden;
 }
 header .link a {
+  position: relative;
   color: inherit;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: rgba(0, 0, 0, 0.1215686275) -1px -1px 19px 3px;
-  padding: 8px 32px;
-  border-radius: 1em;
-  transition: box-shadow 0.2s ease-in-out;
+  top: -10px;
 }
-header .link a:hover {
-  box-shadow: rgba(0, 0, 0, 0.1215686275) 2px 2px 19px 10px;
+header .link p {
+  text-align: center;
+  background: rgb(255, 255, 255);
+  padding: 0.5em 1.5em;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: auto;
+  padding-top: 15px;
+}
+header .link p:hover {
+  border-radius: 15px;
+  cursor: pointer;
+  padding-top: 35px;
 }
 header .bold {
   font-weight: 600;
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   padding-top: 80px;
   display: inline-block;
@@ -75,23 +91,6 @@ h5 {
   background-color: black;
   width: 5px;
   position: relative;
-}
-.hero .divider::before, .hero .divider::after {
-  content: "";
-  position: absolute;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: black;
-  margin: 1.5em;
-}
-.hero .divider::after {
-  height: 40px;
-}
-.hero .divider::before {
-  height: 70px;
-  bottom: 0;
-  right: 0;
-  transform: translateX(175%);
 }
 .hero .placeholder {
   width: 400px;
@@ -144,9 +143,8 @@ h5 {
 }
 #about {
   padding: 0 15%;
-}
-#about .content {
-  padding: 5em 0;
+  background-color: rgba(141, 141, 141, 0.9);
+  color: white;
 }
 #about p {
   white-space: pre-wrap;
@@ -158,6 +156,7 @@ h5 {
   display: block;
   padding-bottom: 2em;
   position: relative;
+  z-index: 200;
 }
 #about p[data-int="0"] {
   padding-left: 100px;
@@ -167,31 +166,6 @@ h5 {
 }
 #about p::first-letter {
   font-size: 1.7rem;
-}
-#about p[data-cir="1"]::before {
-  content: "";
-  aspect-ratio: 1;
-  opacity: 0.1;
-  background-color: black;
-  z-index: -3;
-  border-radius: 50%;
-  position: absolute;
-  box-shadow: inset 0px 0px 20px 20px #ffffff;
-  height: 300px;
-  right: 0;
-}
-#about p[data-cir="2"]::before {
-  content: "";
-  aspect-ratio: 1;
-  opacity: 0.1;
-  background-color: black;
-  z-index: -3;
-  border-radius: 50%;
-  position: absolute;
-  box-shadow: inset 0px 0px 20px 20px #ffffff;
-  height: 150px;
-  left: 0;
-  top: -2em;
 }
 
 #gallery .image {
@@ -223,6 +197,9 @@ h5 {
   border-radius: 10px;
   padding: 8px 32px;
   box-shadow: 0px 0px 10px 6px rgba(180, 180, 180, 0.4117647059);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   margin-bottom: 2em;
   transition: all 0.5s ease;
 }
@@ -380,4 +357,64 @@ h5 {
 }
 .credit a {
   font-weight: 200;
+}
+
+.c {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  background-color: #e1e1e1;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.c1 {
+  height: 40px;
+  top: 70vh;
+  left: 30vw;
+}
+
+.c2 {
+  height: 70px;
+  top: 30vh;
+  left: 15vw;
+}
+
+h2, h5, p {
+  z-index: 2;
+}
+
+@media only screen and (max-width: 950px) {
+  .hero {
+    flex-direction: column;
+  }
+  .hero .placeholder {
+    position: absolute;
+    transform: rotate(36deg) translateX(25%) translateY(-25%);
+  }
+  #about {
+    padding: 0 24px;
+  }
+  .gmp {
+    display: none;
+  }
+  .sci {
+    align-self: flex-end;
+  }
+  .link {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 2px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .link {
+    font-size: 0.8rem;
+    align-self: center;
+    justify-content: center;
+  }
+  header {
+    padding: 2em 0.5em;
+  }
 }/*# sourceMappingURL=main.css.map */
