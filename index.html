@@ -1,62 +1,314 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
+
 <head>
-    <meta charSet="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <title>בשר טיימר 🥩</title>
-    <meta name="og:title" content="בשר טיימר 🥩"/>
-    <meta name="description" content="טיימר המראה בעוד כמה זמן מותר לאכול בשר"/>
-    <meta name="og:description" content="טיימר המראה בעוד כמה זמן מותר לאכול בשר"/>
-    <link rel="icon" href="/favicon.ico"/>
-    <meta name="next-head-count" content="7"/>
-    <link rel="preload" href="5a51a3e84875276b.css" as="style"/>
-    <link rel="stylesheet" href="5a51a3e84875276b.css" data-n-g=""/>
-    <link rel="preload" href="ada07874937f93a7.css" as="style"/>
-    <link rel="stylesheet" href="ada07874937f93a7.css" data-n-p=""/>
-    <noscript data-n-css=""></noscript>
-    <script defer="" nomodule="" src="polyfills-c67a75d1b6f99dc8.js"></script>
-    <script src="webpack-7ee66019f7f6d30f.js" defer=""></script>
-    <script src="framework-f99e4e38d5204d9a.js" defer=""></script>
-    <script src="main-e0ddca6ca271803b.js" defer=""></script>
-    <script src="app-deb173bd80cbaa92.js" defer=""></script>
-    <script src="index-3ffca98086b9acd5.js" defer=""></script>
-    <script src="buildManifest.js" defer=""></script>
-    <script src="ssgManifest.js" defer=""></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תפארת הר״ן</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56QJJHC2W1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+        window.onerror = function (msg, url, line, col, error) {
+            console.log(msg, url, error)
+        }
 
-        gtag('config', 'G-56QJJHC2W1');
+        window.onload = function () {
+            if (window.addEventListener) {
+                window.addEventListener("message", ReadPostMessage, false);
+            } else {
+                window.attachEvent("onmessage", ReadPostMessage);
+            }
+            document.getElementById('NedarimFrame').onload = function () {
+                console.log('StartNedarim'); PostNedarim({ 'Name': 'GetHeight' })
+            }
+            $('#NedarimFrame').src = "https://matara.pro/nedarimplus/iframe?language=he";
+
+            $("form").submit(e => {
+                e.preventDefault();
+                PayBtClick();
+            });
+        }
+
+
+        function PostNedarim(Data) {
+            const iframeWin = $('#NedarimFrame').contentWindow;
+            iframeWin.postMessage(Data, "*");
+        };
+
+
+        function ReadPostMessage(event) {
+            console.log(event.data);
+            switch (event.data.Name) {
+                case 'Height':
+                    $('#NedarimFrame').height((parseInt(event.data.Value) + 15) + "px");
+                    break;
+
+                case 'TransactionResponse':
+                    document.getElementById('Result').innerHTML = '<b>TransactionResponse:<br/>' + JSON.stringify(event.data.Value) + '</b><br/>see full data in console';
+                    console.log(event.data.Value)
+            }
+        }
+
+        function PayBtClick() {
+            const data = {
+                'Name': 'FinishTransaction2',
+                'Value': {
+                    'Mosad': 7000659,
+                    'ApiValid': "sarlVsmIru",
+                    'PaymentType': $("input[type=radio][name=PaymentType]:checked").val(),
+                    'Currency': '1',
+
+                    'Zeout': '',
+                    'FirstName': $("#name").val(),
+                    'LastName': '',
+                    'Street': $("#street").val(),
+                    'City': $("#city").val(),
+                    'Phone': '',
+                    'Mail': '',
+
+                    'Amount': $("#Amount").val(),
+                    'Tashlumim': $("#Tashlumim").val(),
+
+                    'Groupe': '',
+                    'Comment': 'בדיקת אייפרם 2',
+
+                    'Param1': 'פרמטר 1',
+                    'Param2': '',
+                    'ForceUpdateMatching': '1', //מיועד לקמפיין אם מעוניינים שהמידע יידחף ליעד, למרות שזה לא נהוג באייפרם
+
+                    'CallBack': '',
+                }
+            }
+            console.log("donation submited: ", data)
+            PostNedarim(data)
+        }
+
     </script>
 </head>
+
 <body>
-<div id="__next">
-    <div class="Home_container__bCOhY">
-        <header class="Home_header__GCVRv"><span>בס״ד</span></header>
-        <main class="Home_main__nLjiQ"><h2>מותר לאכול בשר בעוד:</h2>
-            <div><h1>0 יום,
-                0 שעות,
-                0 דקות
-                ו0 שניות</h1></div>
-            <h4>הרחמן הוא יחזיר לנו עבודת בית המקדש במהרה בימינו</h4></main>
-        <footer class="Home_footer____T7K"><a href="https://github.com/YeudaBy">Yeuda By 🕍</a></footer>
-    </div>
-</div>
-<script id="__NEXT_DATA__" type="application/json">{
-    "props": {
-        "pageProps": {}
-    },
-    "page": "/",
-    "query": {},
-    "buildId": "znfLrMAxNvJSWliDc2uX2",
-    "nextExport": true,
-    "autoExport": true,
-    "isFallback": false,
-    "scriptLoader": []
-}</script>
+    <header>
+        <div class="link bold">
+            <a href="#donate">
+                תרומה
+            </a>
+        </div>
+
+        <div class="link">
+            <a href="#about">
+                אודות
+            </a>
+        </div>
+
+        <div class="link">
+            <a href="#gallery">
+                גלריה
+            </a>
+        </div>
+
+        <div class="link">
+            <a href="#contact">
+                צור קשר
+            </a>
+        </div>
+
+
+    </header>
+
+    <section class="hero">
+        <h2>תפארת <br> הר״ן</h2>
+
+        <div class="divider"></div>
+
+        <div class="placeholder">
+            "image placeholder"
+        </div>
+
+
+
+        <a href="#donate" class="scroll-down">
+            <span>תרמו עכשיו!</span>
+            <div class="a">
+                <div></div>
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="content">
+
+            <h5>כולל תפארת הר״ן</h5>
+
+
+            <p data-int="0">קרית הרצוג התורנית, שבשנים האחרונות הפכה לשכונה יחודית בצביונה, מודעת לסיבה המרכזית למהפך
+                שחל בה; כולל ישיבת הר”ן שבין כותליו גדלים ומתעלים כשבעים אברכים, רובם מפארי תושבי השכונה והסביבה, מהווה
+                מגדלור שמאיר לכל השכונה.</p>
+
+            <p data-int="1" data-cir="1">הכולל, המהווה מרכז לתורה, תפילה ומוסר, שוכן בבית המדרש המרכזי והמכובד של
+                השכונה, בית הכנסת “נחלת סירוקה”; בראשותו של רב השכונה הנערץ הגאון רבי יהודה אריה שווארץ שליט”א, שמעת לעת
+                אף מוסר בו שיעורי הלכה, כמו כן נמסרים בו מעת לעת שיעורי תורה ומוסר מגדולי תורה ומוסר המיועדים גם לתושבי
+                השכונה.</p>
+
+            <p data-int="0">עשרות האברכים הלומדים בכולל, רובם ככולם בעלי משפחות, מהם ברוכות בילדים בלעה”ר, עמלים בתורה
+                מתוך הדחק, באוירה יחודית ונעימה, כאשר האברכים חשים כקרובי משפחה זה לזה, ויחדיו מתעלים ומתגדלים בתורה
+                ובמוסר ובמידות טובות, כאשר מידי שבוע נמסרים בחבורות חבורות של אברכים דברי תורה, וכן ועדים במחשבת מוסר
+                ומידות, מלבד שיעורי תורה ושיחות מוסר שנמסרים מידי שבוע ע”י ראשי הכולל הרבנים הגאונים רבי יהושע
+                בורודיאנסקי שליט”א ורבי שמעון שרייבר שליט”א, וכן מעת לעת ע”י ראש ישיבות הר”ן בארה”ק הרב הגאון רבי צבי
+                ויספיש שליט”א. </p>
+
+            <p data-int="1">כולל יחודי זה הוקם לפני עשור וחצי שנים ע”י הרב הגאון רבי אשר ברסלויער שליט”א [ששימש כראש
+                הכולל עד שנת תשע], איש אמונם של גדולי הדור זצ”ל ושליט”א, אשר זכה לקרבתם וחיזוקם בהקמת והחזקת הכולל, כמו
+                הגראי”ל שטיינמן זצ”ל הגרמ”י ליפקוביץ זצ”ל והגר”נ קרליץ, ויבלח”א הגר”ח קניבסקי שליט&”א ועוד, אשר במשך
+                השנים אף טרחו ומסרו שיעורי תורה ומוסר בין כתלי הכולל, וכן כתוב עשרות מכתבים חמים לטובת הכולל </p>
+
+            <p data-int="0" data-cir="2">גדולי ישראל האצילו מברכותיהם החמות על כל הזוכים להיות לעזר בעול הכבד של החזקת
+                כשבעים משפחות האברכים, אשר חלקם דחוקים ממש בפרנסתם, ומלבד התמיכה החודשית מקבלים האברכים תמיכה מכובדת
+                נוספת בערבי חגים בסיועם של אנשי חסד טובי לב, שזיהו מקום תורה יחודי זה כמקום הראוי להרמת נדבת לבם, רבים
+                מהם חשים סייעתא דשמיא במגוון נושאים שנזקקו בהם לישועה והצלחה, ושמחים לסייע למקום תורה חשוב ונעלה זה.</p>
+
+
+        </div>
+    </section>
+
+
+    <section id="gallery">
+        <h5>גלריית תמונות</h5>
+        <div class="content">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+        </div>
+    </section>
+
+
+    <section id="donate">
+        <h5>תרמו עכשיו!</h5>
+
+        <a href="https://www.matara.pro/nedarimplus/online/?mosad=7000659" target="_blank">
+            לתרומה דרך נדרים פלוס
+            <span>&#8689;</span>
+        </a>
+
+        <div>
+
+            <form id="pay-form">
+                <label for="name">אנא הזינו את שמכם המלא:</label>
+                <input type="text" id="name" name="name" required /><br />
+
+
+                <label for="street">רחוב המגורים:</label>
+                <input type="text" id="street" name="street" required /><br />
+
+
+                <label for="city">עיר המגורים:</label>
+                <input type="text" id="city" name="city" required /><br />
+
+
+                <br />
+                <p>אנא בחר את סוג התרומה:</p>
+                <div class="options">
+                    <input type="radio" id="regular" name="PaymentType" value="Ragil" checked="checked">
+                    <label for="regular">תרומה רגילה / תשלומים</label>
+                    <input type="radio" id="hk" name="PaymentType" value="HK">
+                    <label for="hk">לתרומה בהוראת קבע</label>
+                </div>
+
+
+                <div id="regular-options">
+                    <label for="Amountt">הזינו את סכום התרומה (בשקלים):</label>
+                    <input type="number" id="Amount" name="Amountt" value="52" />
+
+                    <br />
+
+                    <label for="Tashlumim">בחר מספר תשלומים:</label>
+                    <input type="number" id="Tashlumim" name="Tashlumim" value="1">
+                </div>
+
+
+                <div id="hk-options">
+                    <label for="Amountt">הזינו את סכום התרומה החודשית (בשקלים):</label>
+                    <input type="number" id="Amount" name="Amountt" value="52" />
+                    <br />
+
+                    <label for="Tashlumim">הזינו את מספר החודשים לחיוב (לתרומה ללא הגבלה, ניתו להשאיר ריק)</label>
+                    <input type="number" id="Tashlumim" name="Tashlumim" value="1">
+                </div>
+
+                <iframe id="NedarimFrame" src="https://www.matara.pro/nedarimplus/iframe/"></iframe>
+
+                <button class="submit" type="submit">ביצוע התרומה</button>
+
+            </form>
+
+
+
+        </div>
+    </section>
+
+
+    <footer id="contact">
+
+        <div class="row">
+
+            <div class="right">
+
+                <p>
+                    <span class="bolder">
+                        כתובת הכולל:
+                    </span>
+                    <br />
+                    <span>
+                        הרב אברמסקי 26, קרית הרצוג בני ברק
+                    </span>
+                </p>
+                <iframe class="gmp" width="300" style="border:0" loading="lazy" allowfullscreen
+                    src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJszufe4xJHRURL_EJVT6tdLg&key=AIzaSyAwNUBVm-WZybhAs3mZMnVz7M9MReK5chM">
+                </iframe>
+            </div>
+
+
+            <div class="divider"></div>
+
+            <p class="sci">
+                <span class="bolder">
+                    ליצירת קשר עם המשרד:
+                </span>
+                <br />
+                <br />
+                <span>כתובת: הושע 4, בני ברק</span>
+                <br />
+                <a href="tel:039464677">
+                    <span>03-9464677</span>
+                </a>
+                <br />
+                <a href="mailto:J0527639960@GMAIL.COM">
+                    <span>J0527639960@GMAIL.COM</span>
+                </a>
+                <br />
+                <span></span>
+                <br />
+
+            </p>
+        </div>
+
+        <div class="credit">
+            Build and designed by <span>
+                <a>Yeuda By</a>
+            </span>
+        </div>
+        </section>
+
+
+        <script src="/js/iframe.js"></script>
 </body>
+
 </html>
