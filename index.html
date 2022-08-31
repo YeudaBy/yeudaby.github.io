@@ -50,8 +50,9 @@
                     break;
 
                 case 'TransactionResponse':
-                    document.getElementById('Result').innerHTML = '<b>TransactionResponse:<br/>' + JSON.stringify(event.data.Value) + '</b><br/>see full data in console';
                     console.log(event.data.Value)
+                    document.getElementById('Result').innerHTML = '<b>TransactionResponse:<br/>' + JSON.stringify(event.data.Value) + '</b><br/>see full data in console';
+
             }
         }
 
@@ -255,6 +256,8 @@
                 <iframe id="ne-iframe" src="https://www.matara.pro/nedarimplus/iframe/"></iframe>
 
                 <button class="submit" type="submit">ביצוע התרומה</button>
+
+                <div id="Result"></div>
 
             </form>
 
