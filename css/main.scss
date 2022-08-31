@@ -537,3 +537,27 @@ h2, h5, p {
         padding: 2em .5em;
     }
 }
+
+.msg {
+    width: 80%;
+    background-color: #b4b4b469;
+    text-align: center;
+    padding: 2em;
+    margin: auto;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    
+
+    h6 {
+        font-size: large;
+        margin: .5em;
+    }
+
+    span {
+        font-weight: 600;
+    }
+}
+
+#sucsess {
+    display: none;
+}

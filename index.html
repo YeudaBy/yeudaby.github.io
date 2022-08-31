@@ -50,8 +50,15 @@
                     break;
 
                 case 'TransactionResponse':
-                    console.log(event.data.Value)
-                    document.getElementById('Result').innerHTML = '<b>TransactionResponse:<br/>' + JSON.stringify(event.data.Value) + '</b><br/>see full data in console';
+                    const data = (event.data.Value)
+                    console.log(data);
+                    if (data.Status === "OK") {
+                        document.getElementById('su-amount').innerText = data.Amount;
+                        document.getElementById("su-amount").style.display = "block";
+                    } else if (data.Status === "Error") {
+                        document.getElementById("error-msg").innerText = data.Message;
+                        document.getElementById("error").style.display = "block";
+                    }
 
             }
         }
@@ -257,7 +264,25 @@
 
                 <button class="submit" type="submit">ביצוע התרומה</button>
 
-                <div id="Result"></div>
+                <div class="msg" id="sucsess">
+                    <h6>תרומתך התקבלה בהצלחה!</h6>
+                    <p>תרומתך על סך של <span id="su-amount">0</span> שקלים התקבלה בהצלחה ותעזור לאברכי הכולל!</p>
+                </div>
+
+                <div class="msg" id="error">
+                    <h6>לצערינו ארעה שגיאה במהלך התרומה :(</h6>
+                    <p>
+                       
+                         מערכת הסליקה שלחה לנו את השגיאה הבאה:
+                           <br />
+                           <span id="error-msg">Error</span>
+                           <br />
+
+                           אם השגיאה אינה קשורה לכרטיס האשראי שלכם, נשמח אם תפנו למפתח ודווחו עליה.
+                           לבינתיים תוכלו להמשיך ולתרום באחת מהאפשרויות הבאות:
+                           דרך האתר של נדרים פלוס, אפליקציית פושקוינס או בשיחה למשרדי הכולל.
+                    </p>
+                </div>
 
             </form>
 

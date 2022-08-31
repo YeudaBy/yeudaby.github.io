@@ -417,4 +417,24 @@ h2, h5, p {
   header {
     padding: 2em 0.5em;
   }
+}
+.msg {
+  width: 80%;
+  background-color: rgba(180, 180, 180, 0.4117647059);
+  text-align: center;
+  padding: 2em;
+  margin: auto;
+  margin-bottom: 2em;
+  border-radius: 10px;
+}
+.msg h6 {
+  font-size: large;
+  margin: 0.5em;
+}
+.msg span {
+  font-weight: 600;
+}
+
+#sucsess {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
