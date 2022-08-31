@@ -426,6 +426,7 @@ h2, h5, p {
   margin: auto;
   margin-bottom: 2em;
   border-radius: 10px;
+  display: none;
 }
 .msg h6 {
   font-size: large;
@@ -433,8 +434,4 @@ h2, h5, p {
 }
 .msg span {
   font-weight: 600;
-}
-
-#sucsess {
-  display: none;
 }/*# sourceMappingURL=main.css.map */
