@@ -4,10 +4,10 @@ const c2 = $(".c2")
 function handler(e) {
     const scrollY = window.scrollY;
     const innerWidth = window.innerWidth;
-    console.log(scrollY);
-    console.log(window.innerHeight);
-    console.log(scrollY > 700);
-    console.log(scrollY < 2300);
+    // console.log(scrollY);
+    // console.log(window.innerHeight);
+    // console.log(scrollY > 700);
+    // console.log(scrollY < 2300);
     const toBtm = (scrollY / 400) / 15
 
 
