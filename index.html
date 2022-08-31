@@ -54,7 +54,7 @@
                     console.log(data);
                     if (data.Status === "OK") {
                         document.getElementById('su-amount').innerText = data.Amount;
-                        document.getElementById("su-amount").style.display = "block";
+                        document.getElementById("sucsess").style.display = "block";
                     } else if (data.Status === "Error") {
                         document.getElementById("error-msg").innerText = data.Message;
                         document.getElementById("error").style.display = "block";
@@ -257,7 +257,7 @@
                     <br />
 
                     <label for="Tashlumim">הזינו את מספר החודשים לחיוב (לתרומה ללא הגבלה, ניתו להשאיר ריק)</label>
-                    <input type="number" id="Tashlumim" name="Tashlumim" value="1">
+                    <input type="number" id="Tashlumim" name="Tashlumim">
                 </div>
 
                 <iframe id="ne-iframe" src="https://www.matara.pro/nedarimplus/iframe/"></iframe>
