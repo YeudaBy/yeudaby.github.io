@@ -598,3 +598,20 @@ p {
         font-weight: 600;
     }
 }
+
+[data-scroll] {
+    transition: all 1s;
+}
+
+[data-scroll="in"] {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+[data-scroll="out"][data-int="1"] {
+    transform: translateX(10px);
+}
+
+[data-scroll="out"][data-int="0"] {
+    transform: translateX(-10px);
+}
